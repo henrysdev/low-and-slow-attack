@@ -50,6 +50,19 @@ int * initConnection(char* target)
 	return NULL;
 }
 
+char * formHttpRequest(char* url_path, char* host_address, char* request_body, uint32_t cont_len_hdr)
+{
+	char * http_request = malloc(sizeof(char) * 512);
+	snprintf(http_request, 512, 
+		"GET %s HTTP/1.1\r\n"
+		"Host: %s\r\n"
+		"Keep-Alive: timeout=15, max=100"
+		"Content-type: application/x-www-form-urlencoded\r\n"
+		"Content-length: %d\r\n\r\n"
+		"%s\r\n", url_path, host_address, cont_len_hdr, request_body);
+	return http_request;
+}
+
 int main(int argc, char* argv[])
 {
 	if(argc != 3)
@@ -83,5 +96,32 @@ int main(int argc, char* argv[])
 	int* active_conns[actv_cnt];
 	memcpy(active_conns, open_conns, sizeof(active_conns) );
 	
+	// send keep alive headers
+	for(;;)
+	{
+		for(i = 0; i < actv_cnt; i++)
+		{
+			char* url_path = "/projects";
+			char* request_body = "pranav_pradeep";
+			unsigned int cont_len_hdr = strlen(request_body);
+
+			char* http_request = formHttpRequest(url_path, target_address, request_body, cont_len_hdr);
+			
+			int resp;
+
+			resp = write(*active_conns[i], http_request, strlen(request_body) + 1);
+			printf("%s\n", http_request);
+			if(resp < 0)
+			{
+				printf("%s\n", "failed to send HTTP request");
+			}
+			else
+			{
+				printf("%s\n", "sent stay alive packet successfully");
+			}
+		}
+		sleep(4);
+	}
+
 	return 0;
 }
