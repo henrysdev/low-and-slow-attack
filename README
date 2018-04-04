@@ -1,18 +1,29 @@
-Slow Loris Denial of Service Attack
-
+  _,  ,     _,  ,  ,     ,     _,   ,_    ___,   _, 
+ (_,  |    / \, | ,|     |    / \,  |_)  ' |    (_, 
+  _) '|__ '\_/  |/\|    '|__ '\_/  '| \   _|_,   _) 
+ '      '  '    '  `       '  '     '  ` '      '   
+                                                    
 Disclaimer: I neither condone nor intend for this program to be used for malicious purposes. Please only run this program on websites that you own or have permission to test on.
 
 
-OVERVIEW
-The goal of any DOS attacks is the same: To completely exhaust the target server's resources. While traditional DOS attacks often accomplish this by flooding servers with huge ammounts of incoming traffic, low and slow attacks use a much sneakier method of action.
+[ OVERVIEW ]
+The goal of any DOS attacks is the same: To completely exhaust the target server's resources. While traditional DOS attacks often accomplish this by flooding servers with huge ammounts of incoming traffic, low and slow attacks use a much sneakier method of action. Low and slow attacks such as "Slow Loris" gradually exhaust a server's resources by continuously opening and maintaining new connections with the server. Given that a server has a limit to the amount of concurrent connections it can handle simultaneously, the server will eventually be unable to handle any new connections, denying availability to legitimate visitors to the website.
 
-Low and slow attacks such as "Slow Loris" and "RUDY" (r u dead yet) slowly exhaust a server's resources by repeatedly opening new connections with the server. Given that a server has a limit to the amount of concurrent connections it can handle simultaneously, the server will eventually be unable to handle any new connections, denying availability to legitimate visitors to the website.
 
-COMPILATION
-gcc -o slowloris slowloris.c
+[ COMPILATION ]
+gcc -o attack slowloris.c
 
-EXECUTION
-./slowloris <WEBSITE_ADDRESS> <MAX_CONNECTIONS>
 
-WEBSITE_ADDRESS is the URL or address of the website you wish to target.
-MAX_CONNECTIONS is the limit of how many connections to spawn with the server.
+[ EXECUTION ]
+./attack <IP_ADDRESS> <MAX_CONNECTIONS>
+
+where IP_ADDRESS is the address of the web server you wish to target, and MAX_CONNECTIONS is the limit of how many connections to spawn with the server.
+
+
+[ NOTES ]
+A scripting language such as Python would be a more practical choice for an implementation language for this kind of attack. However, this project was created purely for learning purposes.
+
+
+[ RESOURCES ]
+http://beej.us/guide/bgnet/
+https://www.youtube.com/watch?v=XiFkyR35v2Y
