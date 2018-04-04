@@ -9,7 +9,7 @@ The goal of any DOS attacks is the same: To completely exhaust the target server
 Low and slow attacks such as "Slow Loris" and "RUDY" (r u dead yet) slowly exhaust a server's resources by repeatedly opening new connections with the server. Given that a server has a limit to the amount of concurrent connections it can handle simultaneously, the server will eventually be unable to handle any new connections, denying availability to legitimate visitors to the website.
 
 COMPILATION
-gcc -o slowloris.c slowloris
+gcc -o slowloris slowloris.c
 
 EXECUTION
 ./slowloris <WEBSITE_ADDRESS> <MAX_CONNECTIONS>
