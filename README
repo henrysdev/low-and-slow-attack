@@ -1,3 +1,18 @@
-Project by Henry Warren
-2017
-henrysdev@gmail.com
+Slow Loris Denial of Service Attack
+
+Disclaimer: I neither condone nor intend for this program to be used for malicious purposes. Please only run this program on websites that you own or have permission to test on.
+
+
+OVERVIEW
+The goal of any DOS attacks is the same: To completely exhaust the target server's resources. While traditional DOS attacks often accomplish this by flooding servers with huge ammounts of incoming traffic, low and slow attacks use a much sneakier method of action.
+
+Low and slow attacks such as "Slow Loris" and "RUDY" (r u dead yet) slowly exhaust a server's resources by repeatedly opening new connections with the server. Given that a server has a limit to the amount of concurrent connections it can handle simultaneously, the server will eventually be unable to handle any new connections, denying availability to legitimate visitors to the website.
+
+COMPILATION
+gcc -o slowloris.c slowloris
+
+EXECUTION
+./slowloris <WEBSITE_ADDRESS> <MAX_CONNECTIONS>
+
+WEBSITE_ADDRESS is the URL or address of the website you wish to target.
+MAX_CONNECTIONS is the limit of how many connections to spawn with the server.
