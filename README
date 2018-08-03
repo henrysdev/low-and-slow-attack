@@ -2,10 +2,7 @@
  (_,  |    / \, | ,|     |    / \,  |_)  ' |    (_, 
   _) '|__ '\_/  |/\|    '|__ '\_/  '| \   _|_,   _) 
  '      '  '    '  `       '  '     '  ` '      '   
-                                                    
-Disclaimer: I neither condone nor intend for this program to be used for malicious purposes. 
-Please only run this program on websites that you own or have permission to test on.
-
+ 
 
 [ OVERVIEW ]
 The goal of any DOS attacks is the same: To completely exhaust the target server's resources. 
